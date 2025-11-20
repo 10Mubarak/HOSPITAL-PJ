@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Mercywell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../images/hospital-logo.jpg" type="image/x-icon">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../images/hospital-logo.jpg" alt="Mercywell Logo" class="logo">
+        <span class="brand-name">Mercywell Hospital</span>
+      </a>
+      <nav class="nav">
+        <a href="../index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./department.html">Departments</a>
+        <a href="./doctors.html">Doctors</a>
+        <a href="./appointment.html" class="btn btn-primary">Book Appointment</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+      <button class="mobile-nav-toggle" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Contact Us</h1>
+    <p class="lead">We'd love to hear from you — questions, referral requests and feedback.</p>
+
+    <div class="two-col">
+      <form id="contact-form" class="form card">
+        <div class="form-row">
+          <label for="cname">Your Name</label>
+          <input id="cname" name="name" required>
+        </div>
+        <div class="form-row">
+          <label for="cemail">Email</label>
+          <input id="cemail" name="email" type="email" required>
+        </div>
+        <div class="form-row">
+          <label for="cmessage">Message</label>
+          <textarea id="cmessage" name="message" rows="5" required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+
+      <aside class="card contact-details">
+        <h3>Visit or Call</h3>
+        <p><strong>Address:</strong> 123 Wellness Ave, City</p>
+        <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@mercywell.example">info@mercywell.example</a></p>
+
+        <h3>Map</h3>
+        <iframe
+          title="Hospital location"
+          src="https://www.google.com/maps?q=123+wellness+ave&output=embed"
+          style="width:100%;height:220px;border:0;" loading="lazy"></iframe>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Mercywell Private Hospital</h4>
+        <p>123 Wellness Ave, City — <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        <p><a href="mailto:info@mercywell.example">info@mercywell.example</a></p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <nav class="footer-nav">
+          <a href="about.html">About</a>
+          <a href="departments.html">Departments</a>
+          <a href="doctors.html">Doctors</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <small>© <span id="year6"></span> Mercywell Private Hospital. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- EmailJS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- Your main script -->
+  <script src="script.js" defer></script>
+
+  <!-- EmailJS contact handler -->
+  <script>
+    (function() {
+        emailjs.init("qTBqjtpzU1t8J_yQP"); // your public key
+    })();
+
+    const contactForm = document.getElementById("contact-form");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("service_bsofzqn", "template_md6g1oc", this)
+                .then(() => {
+                    alert("Message sent successfully!");
+                    contactForm.reset();
+                })
+                .catch((err) => {
+                    console.error("EmailJS Error:", err);
+                    alert("Failed to send message.");
+                });
+        });
+    }
+  </script>
+</body>
+</html>
