@@ -367,6 +367,22 @@ body {
     }
 }
 
+@media (max-width: 360px) {
+    .trust-icons {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;            /* IMPORTANT */
+        text-align: center;
+        gap: 0.5rem;                /* optional but helps */
+    }
+
+    .trust-icons li {
+        width: 100%;                /* makes each tag center perfectly */
+        text-align: center;
+    }
+}
+
+
 /* small flourish animations */
 .fade-up {
     opacity: 0;
@@ -487,4 +503,27 @@ body {
 .dept-center-btn {
     text-align: center;
     margin-top: 40px;
+}
+
+
+/* Fix left-edge text spacing on About page + similar sections
+   Works on small phones up to large tablets (360px – 768px)
+   DOES NOT affect desktop layout or other components
+*/
+@media (max-width: 835px) {
+  .section,
+  .two-col div,
+  .profile,
+  main.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Extra smoothing for long paragraphs and lists */
+  .section p,
+  .section ul,
+  .section li {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
 }
